@@ -1,25 +1,14 @@
 const Reviews = () => {
-    return (
-        <section>
-      <ul>
-        <li>
-          <b>CEO</b> - Gabrijela Vohu Manah
-        </li>
-        <li>
-          <b>Sales</b> - Darius Marianne
-        </li>
-        <li>
-          <b>Product</b> - Ségdae Jean-Pierre
-        </li>
-        <li>
-          <b>Marketing</b> - Melina Theotimos
-        </li>
-        <li>
-          <b>Engineering</b> - Gregor Ramadhani
-        </li>
-      </ul>
+  return (
+    <section>
+      <h2>Our mission</h2>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut, nesciunt
+        veniam. Excepturi itaque, voluptates fugiat perspiciatis quo saepe! Iste
+        eaque porro eveniet error dicta, modi ipsum hic quis minima inventore.
+      </p>
     </section>
-    )
-}
+  );
+};
 
 export default Reviews;
