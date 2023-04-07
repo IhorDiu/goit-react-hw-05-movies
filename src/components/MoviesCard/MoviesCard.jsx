@@ -2,18 +2,19 @@ import { useLocation, Link } from 'react-router-dom';
 
 const urlTmdb = 'https://image.tmdb.org/t/p/w400';
 
-const MoviesHomeItem = ({
+const MoviesCard = ({
   id,
   title,
   backdrop_path,
   vote_average,
   release_date,
 }) => {
+  const location = useLocation();
   const releaseData = new Date(release_date);
 
   return (
     <li key={id}>
-      <Link to={`/movies/${id}`}>
+      <Link to={`/movies/${id}`} state={{ from: location }}>
         <div>
           <img src={urlTmdb + backdrop_path} alt={title} />
           <h3>{title}</h3>
@@ -26,7 +27,7 @@ const MoviesHomeItem = ({
   );
 };
 
-export default MoviesHomeItem;
+export default MoviesCard;
 
 //   const [genres, setGenres] = useState([]);
 

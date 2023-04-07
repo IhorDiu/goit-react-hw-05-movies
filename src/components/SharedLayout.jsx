@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -8,7 +9,6 @@ const StyledLink = styled(NavLink)`
     color: orange;
   }
 `;
-
 
 const SharedLayout = () => {
   return (
@@ -23,7 +23,9 @@ const SharedLayout = () => {
           </li>
         </ul>
       </nav>
-      <Outlet/>
+      <Suspense fallback={<div>Loading page...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

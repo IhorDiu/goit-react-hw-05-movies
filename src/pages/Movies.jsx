@@ -4,44 +4,40 @@ import { searchMovies } from 'services/api';
 
 import { toastInfoMessage } from '../services/toast';
 
-import MoviesHomeList from 'components/MoviesHomeList/MoviesHomeList';
+import MoviesList from 'components/MoviesList/MoviesList';
 import Searchbar from 'components/Searchbar/Searchbar';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
 
-  // const searchParamsName = searchParams.get('name') ?? '';
-
-  useEffect(() => {}, []);
+  const queryString = searchParams.get('query') ?? '';
 
   useEffect(() => {
     const searchMoviesList = async () => {
       try {
-        const data = await searchMovies(query);
+        const data = await searchMovies(queryString);
         setMovies(data.results);
       } catch (error) {
         console.log(error.message);
       }
     };
-    const nextParams = query !== '' ? { query } : {};
-    setSearchParams(nextParams);
-    searchMoviesList();
-  }, [query, searchParams]);
 
-  const searchQuery = inputValue => {
-    if (query === inputValue) {
+    searchMoviesList();
+  }, [queryString]);
+
+  const updateQueryString = inputValue => {
+    if (queryString === inputValue) {
       return toastInfoMessage('You made the same request');
     }
-
-    setQuery(inputValue);
+    const nextQueryString = inputValue !== '' ? { query: inputValue } : {};
+    setSearchParams(nextQueryString);
   };
 
   return (
     <div>
-      <Searchbar inputValue={searchQuery} />
-      <MoviesHomeList movies={movies} />
+      <Searchbar inputValue={updateQueryString} />
+      <MoviesList movies={movies} />
     </div>
   );
 };

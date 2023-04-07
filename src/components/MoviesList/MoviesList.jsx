@@ -1,25 +1,17 @@
-import MoviesHomeItem from 'components/MoviesHomeItem/MoviesHomeItem';
+import MoviesCard from 'components/MoviesCard/MoviesCard';
 
-const MoviesHomeList = ({ movies }) => {
+const MoviesList = ({ movies }) => {
   return (
     <ul>
       {movies.map(
-        ({
-          id,
-          title,
-          backdrop_path,
-          vote_average,
-          release_date,
-          genre_ids,
-        }) => (
-          <MoviesHomeItem
+        ({ id, title, backdrop_path, vote_average, release_date }) => (
+          <MoviesCard
             key={id}
             id={id}
             title={title}
             backdrop_path={backdrop_path}
             vote_average={vote_average}
             release_date={release_date}
-            
           />
         )
       )}
@@ -27,7 +19,7 @@ const MoviesHomeList = ({ movies }) => {
   );
 };
 
-export default MoviesHomeList;
+export default MoviesList;
 
 // {
 //   "poster_path": "/IfB9hy4JH1eH6HEfIgIGORXi5h.jpg",

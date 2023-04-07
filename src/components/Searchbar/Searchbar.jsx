@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import { toastWarningMessage } from '../../services/toast';
+import { toastWarningMessage } from '../../services/toast';
 // import propTypes from 'prop-types';
 
 import {
@@ -20,9 +20,9 @@ const Searchbar = ({ inputValue }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    // if (searchQuery === '') {
-    //   return toastWarningMessage();
-    // }
+    if (searchQuery === '') {
+      return toastWarningMessage();
+    }
 
     inputValue(searchQuery);
     setSearchQuery('');
