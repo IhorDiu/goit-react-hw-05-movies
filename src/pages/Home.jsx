@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getTrending } from 'services/api';
+import  MoviesHomeList from '../components/MoviesHomeList/MoviesHomeList';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -22,17 +23,12 @@ const Home = () => {
   return (
     <main>
       <h1>Trending on today</h1>
-      <ul>
-        {movies.map(({ id, title }) => (
-          <li key={id}>{title}</li>
-        ))}
-      </ul>
+      <MoviesHomeList movies={movies} />      
     </main>
   );
 };
 
 export default Home;
-
 
 /* <div class="card style_1">
   <div class="image">
@@ -42,9 +38,7 @@ export default Home;
 
       </a>
     </div>
-    <div class="options" data-id="76600" data-object-id="4e9de7a65e73d65e02000328" data-media-type="movie" data-role="tooltip">
-      <a class="no_click" href="#"><div class="glyphicons_v2 circle-more white"></div></a>
-    </div>
+   
   </div>
   <div class="content">
     <div class="consensus tight">

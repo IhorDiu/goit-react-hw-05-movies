@@ -31,4 +31,8 @@ export async function getMovieCredits(movieId) {
   export async function getMovieReviews(movieId) {
     return fetchMovies(`movie/${movieId}/reviews`);
   }
+
+  // export async function getMovieGenre(movieId) {
+  //   return fetchMovies(`genre/movie/list`);
+  // }
   
