@@ -13,6 +13,7 @@ const Cast = () => {
     const movieCast = async () => {
       try {
         const data = await getMovieCredits(movieId);
+        console.log(data.crew);
         setCrew(data.crew);
       } catch (error) {
         console.log(error.message);
@@ -25,7 +26,7 @@ const Cast = () => {
     <>
       <h3>Crew</h3>
       <Container>
-        {crew.map(({ id, profile_path, name, popularity }) => (
+        {crew.map(({ id, profile_path, name, job, popularity }) => (
           <CardWrapper key={id}>
             <img
               src={
@@ -37,7 +38,7 @@ const Cast = () => {
               width={100}
             />
             <AddInfo>{name}</AddInfo>
-
+            <AddInfo>{job}</AddInfo>
             <AddInfo>Popularity: {popularity}</AddInfo>
           </CardWrapper>
         ))}

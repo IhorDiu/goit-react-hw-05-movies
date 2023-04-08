@@ -13,7 +13,7 @@ const Reviews = () => {
       setLoading(true);
       try {
         const data = await getMovieReviews(movieId);
-console.log(data.results);
+
         setReviews(data.results);
       } catch (error) {
         console.log(error.message);
