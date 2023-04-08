@@ -1,12 +1,13 @@
 import no_photo from 'Images/no_poster.jpg';
+import { Section, MovieInfo, GenresList, GenresItem  } from './MovieDetailsCard.styled';
 
 const MovieDetailsCard = ({
   movie: { release_date, title, vote_average, overview, genres, poster_path },
 }) => {
   const releaseData = new Date(release_date);
-  
+
   return (
-    <div>
+    <Section>
       <img
         src={
           poster_path
@@ -16,17 +17,20 @@ const MovieDetailsCard = ({
         alt="{title}"
         min-width={'100px'}
       />
-      <h2>{title}</h2>
-      <p>Release date: {releaseData.toLocaleDateString()}</p>
-      <p>Rating: {vote_average}/10</p>
-      <ul>
-        {genres?.map((item) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
-
-      <p>Overview: {overview}</p>
-    </div>
+      <MovieInfo>
+        <h2>{title}</h2>
+        <p>Release date: {releaseData.toLocaleDateString()}</p>
+        <h4>Rating: <span>{vote_average}/10</span></h4>
+        <h4>Genres:</h4>
+        <GenresList>
+          {genres?.map(item => (
+            <GenresItem key={item.id}>| {item.name} |</GenresItem>
+          ))}
+        </GenresList>
+        <h4>Overview:</h4>
+        <p>{overview}</p>
+      </MovieInfo>
+    </Section>
   );
 };
 

@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCredits } from 'services/api';
+import { Container } from './MoviesList/MoviesList.styled';
+import { CardWrapper, AddInfo } from './MoviesCard/MoviesCard.styled';
+import no_photo from '../Images/coming_soon.jpg';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -21,20 +24,24 @@ const Cast = () => {
   return (
     <>
       <h3>Actors</h3>
-      <ul>
+      <Container>
         {cast.map(({ id, profile_path, name, character, popularity }) => (
-          <li key={id}>
+          <CardWrapper key={id}>
             <img
-              src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+              src={
+                profile_path
+                  ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                  : no_photo
+              }
               alt="{name}"
               width={100}
             />
-            <p>{name}</p>
-            <p>Character: {character} </p>
-            <p>Popularity: {popularity}</p>
-          </li>
+            <AddInfo>{name}</AddInfo>
+            <AddInfo>Character: {character} </AddInfo>
+            <AddInfo>Popularity: {popularity}</AddInfo>
+          </CardWrapper>
         ))}
-      </ul>
+      </Container>
     </>
   );
 };

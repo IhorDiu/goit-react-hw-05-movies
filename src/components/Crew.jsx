@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCredits } from 'services/api';
+import { Container } from './MoviesList/MoviesList.styled';
+import { CardWrapper, AddInfo } from './MoviesCard/MoviesCard.styled';
+import no_photo from '../Images/coming_soon.jpg';
 
 const Cast = () => {
-  
   const [crew, setCrew] = useState([]);
   const { movieId } = useParams();
 
@@ -22,25 +24,26 @@ const Cast = () => {
   return (
     <>
       <h3>Crew</h3>
-      <ul>
+      <Container>
         {crew.map(({ id, profile_path, name, popularity }) => (
-          <li key={id}>
+          <CardWrapper key={id}>
             <img
-              src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+              src={
+                profile_path
+                  ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                  : no_photo
+              }
               alt="{name}"
               width={100}
             />
-            <p>{name}</p>
+            <AddInfo>{name}</AddInfo>
 
-            <p>Popularity: {popularity}</p>
-          </li>
+            <AddInfo>Popularity: {popularity}</AddInfo>
+          </CardWrapper>
         ))}
-      </ul>
+      </Container>
     </>
-
- 
   );
 };
 
 export default Cast;
-

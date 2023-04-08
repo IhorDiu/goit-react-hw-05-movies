@@ -1,5 +1,6 @@
 import { useLocation, Link } from 'react-router-dom';
 import no_photo from '../../Images/no_poster.jpg';
+import { CardWrapper, MovieName, AddInfo } from "./MoviesCard.styled";
 
 const MoviesCard = ({
   id,
@@ -13,7 +14,7 @@ const MoviesCard = ({
   const releaseData = new Date(release_date);
 
   return (
-    <li key={id}>
+    <CardWrapper key={id}>
       <Link to={`/movies/${id}`} state={{ from: location }}>
         <div>
           <img
@@ -25,13 +26,13 @@ const MoviesCard = ({
             }
             alt={title}
           />
-          <h3>{title}</h3>
+          <MovieName>{title}</MovieName>
           {/* <p>{genre}</p> */}
-          <p>Rating: {vote_average.toFixed(1)}/10</p>
-          <p>Release year: {releaseData.getFullYear()}</p>
+          <AddInfo>Rating: {vote_average.toFixed(1)}/10</AddInfo>
+          <AddInfo>Release year: {releaseData.getFullYear()}</AddInfo>
         </div>
       </Link>
-    </li>
+    </CardWrapper>
   );
 };
 

@@ -1,7 +1,12 @@
 import { Suspense, useRef, useEffect, useState } from 'react';
-import { Outlet, Link, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import MovieDetailsCard from 'components/MovieDetailsCard/MovieDetailsCard';
+import {
+  LinkDetails,
+  LinkBack,
+  AddInfo,
+} from '../components/MovieDetailsCard/MovieDetailsCard.styled';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState([]);
@@ -24,22 +29,19 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <Link to={backLinkLocationRef.current}>Back to products</Link>
+      <LinkBack to={backLinkLocationRef.current}> 🔙 Back to movies</LinkBack>
 
       <MovieDetailsCard movie={movie} />
 
       <h3>Additional information</h3>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="crew">Crew</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
+      <AddInfo>
+        <LinkDetails to="cast">Cast</LinkDetails>
+
+        <LinkDetails to="crew">Crew</LinkDetails>
+
+        <LinkDetails to="reviews">Reviews</LinkDetails>
+      </AddInfo>
+
       <Suspense fallback={<div>Loading page...</div>}>
         <Outlet />
       </Suspense>
