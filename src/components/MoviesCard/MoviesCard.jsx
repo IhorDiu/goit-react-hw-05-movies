@@ -1,6 +1,5 @@
 import { useLocation, Link } from 'react-router-dom';
-
-const urlTmdb = 'https://image.tmdb.org/t/p/w400';
+import no_photo from '../../Images/no_poster.jpg';
 
 const MoviesCard = ({
   id,
@@ -8,6 +7,7 @@ const MoviesCard = ({
   backdrop_path,
   vote_average,
   release_date,
+  // poster_path,
 }) => {
   const location = useLocation();
   const releaseData = new Date(release_date);
@@ -16,11 +16,19 @@ const MoviesCard = ({
     <li key={id}>
       <Link to={`/movies/${id}`} state={{ from: location }}>
         <div>
-          <img src={urlTmdb + backdrop_path} alt={title} />
+          <img
+            width="400"
+            src={
+              backdrop_path
+                ? `https://image.tmdb.org/t/p/w400${backdrop_path}`
+                : no_photo
+            }
+            alt={title}
+          />
           <h3>{title}</h3>
           {/* <p>{genre}</p> */}
-          <p>Vote average: {vote_average}</p>
-          <p>Release date: {releaseData.toLocaleDateString()}</p>
+          <p>Rating: {vote_average.toFixed(1)}/10</p>
+          <p>Release year: {releaseData.getFullYear()}</p>
         </div>
       </Link>
     </li>

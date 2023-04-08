@@ -1,0 +1,1 @@
+export { default as no_photo } from './no_poster.jpg';
