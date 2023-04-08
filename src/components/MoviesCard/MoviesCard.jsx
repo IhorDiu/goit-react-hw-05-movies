@@ -37,31 +37,3 @@ const MoviesCard = ({
 
 export default MoviesCard;
 
-//   const [genres, setGenres] = useState([]);
-
-//   useEffect(() => {
-//     const genreList = async () => {
-//       try {
-//         const data = await getMovieGenre();
-//         setGenres(data.genres);
-//         // console.log(data.genres);
-//       } catch (error) {
-//         console.log(error.message);
-//       }
-//     };
-//     genreList();
-
-//   }, []);
-//   console.log(genre_ids);
-//   console.log(genres);
-
-//   for (var i = 0; i < tempDates.length; i++) {
-//     for (var j = 0; j < arr.length; j++) {
-//         if(tempDates.length == arr.length) {
-//             return true;
-//         } else if (tempDates.length !== arr.length) {
-//             if(tempDates[i] !== arr[j]){
-//                 tempDates.push(j);
-//             }
-//         }
-//     }

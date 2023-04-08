@@ -34,6 +34,9 @@ const MovieDetails = () => {
           <Link to="cast">Cast</Link>
         </li>
         <li>
+          <Link to="crew">Crew</Link>
+        </li>
+        <li>
           <Link to="reviews">Reviews</Link>
         </li>
       </ul>
